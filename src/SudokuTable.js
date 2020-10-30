@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Table from "react-bootstrap/Table";
 import "./sudoku.css";
+import { isMobile, isMacOs, isWindows } from "react-device-detect";
 
 var row0 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var row1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -14,6 +15,20 @@ var row8 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var sudoku = [row0, row1, row2, row3, row4, row5, row6, row7, row8];
 var iterations = 0;
 var timeElapsed = 0;
+var InputType;
+
+if (isWindows || isMacOs) {
+  InputType = "text";
+} else {
+  InputType = "number";
+}
+
+function onlyOneDigit(e){
+  console.log(e.target.value.length);
+            if (e.target.value.length > 1) {
+              e.target.value = parseInt(e.target.value).toString().charAt(1);
+            }
+}
 
 function printTableData(Number, colIndex, rowIndex) {
   if (Number === 0) {
@@ -33,6 +48,10 @@ function printTableData(Number, colIndex, rowIndex) {
           key={rowIndex + "," + colIndex}
           className="InputsStyle"
           maxLength={1}
+          type={InputType}
+          onInput={(e) => {
+            onlyOneDigit(e);
+          }}
         ></input>
       </td>
     );
@@ -46,6 +65,10 @@ function printTableData(Number, colIndex, rowIndex) {
             key={rowIndex + "," + colIndex}
             className="InputsStyle"
             maxLength={1}
+            type={InputType}
+            onInput={(e) => {
+              onlyOneDigit(e);
+            }}
           ></input>
         </td>
       );
@@ -59,6 +82,10 @@ function printTableData(Number, colIndex, rowIndex) {
             key={rowIndex + "," + colIndex}
             className="InputsStyle"
             maxLength={1}
+            type={InputType}
+            onInput={(e) => {
+              onlyOneDigit(e);
+            }}
           ></input>
         </td>
       );
@@ -71,6 +98,10 @@ function printTableData(Number, colIndex, rowIndex) {
           key={rowIndex + "," + colIndex}
           className="InputsStyle"
           maxLength={1}
+          type={InputType}
+          onInput={(e) => {
+            onlyOneDigit(e);
+          }}
         ></input>
       </td>
     );
@@ -84,6 +115,10 @@ function printTableData(Number, colIndex, rowIndex) {
             key={rowIndex + "," + colIndex}
             className="InputsStyle"
             maxLength={1}
+            type={InputType}
+            onInput={(e) => {
+              onlyOneDigit(e);
+            }}
           ></input>
         </td>
       );
@@ -95,6 +130,10 @@ function printTableData(Number, colIndex, rowIndex) {
           id={rowIndex + "," + colIndex}
           className="InputsStyle"
           maxLength={1}
+          type={InputType}
+          onInput={(e) => {
+            onlyOneDigit(e);
+          }}
         ></input>
       </td>
     );
@@ -107,6 +146,10 @@ function printTableData(Number, colIndex, rowIndex) {
           key={rowIndex + "," + colIndex}
           className="InputsStyle"
           maxLength={1}
+          type={InputType}
+          onInput={(e) => {
+            onlyOneDigit(e);
+          }}
         ></input>
       </td>
     );
@@ -119,6 +162,10 @@ function printTableData(Number, colIndex, rowIndex) {
           key={rowIndex + "," + colIndex}
           className="InputsStyle"
           maxLength={1}
+          type={InputType}
+          onInput={(e) => {
+            onlyOneDigit(e);
+          }}
         ></input>
       </td>
     );
@@ -131,6 +178,10 @@ function printTableData(Number, colIndex, rowIndex) {
         key={rowIndex + "," + colIndex}
         className="InputsStyle"
         maxLength={1}
+        type={InputType}
+        onInput={(e) => {
+          onlyOneDigit(e);
+        }}
       ></input>
     </td>
   );
@@ -161,7 +212,7 @@ class SudokuTable extends Component {
           </span>{" "}
           iternation
           <br />
-          in{" "}
+          In{" "}
           <span className="redText" id="timeElapsed">
             {timeElapsed}
           </span>{" "}
@@ -225,7 +276,7 @@ function makeChangesInArray() {
 }
 
 function insertValues(sudokuSolved) {
-  if (sudokuSolved[0][0] === 0) {
+  if (sudokuSolved[0][0] == 0) {
     alert("Not A Valid Sudoku Question , Please Check Your Number Combination");
   } else {
     document.getElementById("Acknowledgement").style.visibility = "visible";
