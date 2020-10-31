@@ -210,7 +210,7 @@ class SudokuTable extends Component {
           <span className="redText" id="iterations">
             {iterations}
           </span>{" "}
-          iternation
+          iterations
           <br />
           In{" "}
           <span className="redText" id="timeElapsed">
