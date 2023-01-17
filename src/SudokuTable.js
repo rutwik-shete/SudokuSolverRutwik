@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Table from "react-bootstrap/Table";
 import "./sudoku.css";
-import { isMobile, isMacOs, isWindows } from "react-device-detect";
+import {isMacOs, isWindows } from "react-device-detect";
 
 var row0 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var row1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
